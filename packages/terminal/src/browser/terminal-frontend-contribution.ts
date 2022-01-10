@@ -660,6 +660,8 @@ export class TerminalFrontendContribution implements FrontendApplicationContribu
         const termWidget = await this.newTerminal({ cwd });
         termWidget.start();
         this.open(termWidget, { widgetOptions: options });
+
+        termWidget.onKey(data => console.warn(`terminal onKey: ${data.key} pressed.`));
     }
 
     protected async openActiveWorkspaceTerminal(options?: ApplicationShell.WidgetOptions): Promise<void> {
